@@ -5,8 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-//Temporary storage (in-memory)
-const submissions = [];
+
 
 //Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,9 +26,15 @@ app.post('/submit', (req, res) => {
     return res.render('form', { error: 'All fields are required to process' });
   }
 
-  if (isNaN(age) || age < 1 || age > 120) {
+  if (isNaN(age) || age !== 0 || age < 1 || age > 120) {
     return res.render('form', {
       error: 'Age must be a number between 1 - 120',
+    });
+  }
+
+  if (!validNumber.test(phone)) {
+    return res.render('form', {
+      error: 'phone number must have +91 or 91 prefix, followed by 10 digits',
     });
   }
 
@@ -43,7 +48,7 @@ app.post('/submit', (req, res) => {
   }
 
   // Redirecting to result
-  res.redirect(`/result?email=${encodeURIComponent(email)}`);
+  return res.redirect(`/result?email=${encodeURIComponent(email)}`);
 });
 
 //GET result

@@ -54,16 +54,16 @@
         </div>
 
         <!--Phone Number -->
-        <div class="row g-3 align-items-center">
+        <div class="row g-3 align-items-center mb-3">
             <div class="col-auto">
                 <label for="phone" class="col-form-label">Phone Number:</label>
             </div>
             <div class="col-auto">
-                <input type="number" name="phone" id="phone" class="form-control" required>
+                <input type="tel" name="phone" id="phone" class="form-control" required>
             </div>
             <div class="col-auto">
                 <span class="form-text">
-                   must start with +91 / 91
+                +91 or 91 prefix, followed by 10 digits
                 </span>
             </div>
         </div>
@@ -78,24 +78,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
-    <script>
+    <!-- <script>
         //form validation
         function formValidation() {
             const age = document.getElementById('age').value;
             const phone = document.getElementById('phone').value;
             const validNumber = /^(?:\+91|91)?[6-9]\d{9}$/;
             //Age is requied to be between 1 - 120
-            if (age < 1 || age > 120) {
-                alert('Age must be between 1 and 120');
+            if (age === 0 ||age < 1 || age > 120) {
+                throw error;
                 return false;
             }
             //Phone number need to be valid 
             if (!validNumber.test(phone) ) {
-                alert('phone number must start with +91 or 91 and contained 10 digits');
+                throw error('phone number must start with +91 or 91 and contained 10 digits');
                 return false;
             }
             return true;
         }
-    </script>
+    </script> -->
 </body>
 </html>
