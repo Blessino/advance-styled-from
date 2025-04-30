@@ -3,4 +3,4 @@ function handleError(res, message) {
   return res.render('form', { error: message });
 }
 
-module.export = handleError;
+module.exports = handleError;
